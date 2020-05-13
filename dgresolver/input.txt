@@ -1,0 +1,39 @@
+4
+@swati @vikram SIM-123
+@prabhat @vikram SIM-123
+@aditya @swati SIM-123
+@aditya @prabhat SIM-123
+------------------
+Input Samples (Dependency Dir a->b, a dependent on b, id)
+------------------
+2
+@swati @vikram SIM-123
+@prabhat @vikram SIM-123
+------------------
+2
+@swati @vikram SIM-123
+@vikram @anajaney SIM-123
+------------------
+2
+@swati @vikram SIM-123
+@swati @shantanu SIM-123
+------------------
+4
+@swati @vikram SIM-123
+@prabhat @vikram SIM-123
+@aditya @swati SIM-123
+@aditya @prabhat SIM-123
+------------------
+4
+@swati @vikram SIM-123
+@prabhat @vikram SIM-123
+@aditya @swati SIM-123
+@aditya @prabhat SIM-123
+------------------
+5
+@swati @vikram SIM-123
+@prabhat @vikram SIM-123
+@aditya @swati SIM-123
+@aditya @prabhat SIM-123
+@anajaney @swati SIM-123
+------------------
