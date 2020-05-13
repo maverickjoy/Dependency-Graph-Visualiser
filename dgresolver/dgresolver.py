@@ -40,9 +40,11 @@ def print_graph(edges):
     return
 
 def print_priority_map():
-    table = PrettyTable(['Name', 'Priority', '# of dependencies'])
+    table = PrettyTable(['Name', 'Priority', '# of dependencies', "Dependents"])
     for node, row in priority_map.items():
-        table.add_row([node, row[0], row[1]])
+        dependents = list(set(row[2]))
+        print(dependents)
+        table.add_row([node, row[0], len(dependents), dependents])
     print(table)
     return
 
@@ -66,19 +68,21 @@ def dfs2(node, adj):
 
     if pri == INF:
         pri = 1
-    priority_map[node] = [pri, -1]
+    priority_map[node] = [pri, -1, []]
     return pri + 1
 
-def dfs3(node, adj, dep):
+def dfs3(node, adj, dep, names):
     addDep = 0
     if priority_map[node][1] == -1:
         priority_map[node][1] = 0
         addDep = 1
     priority_map[node][1] += dep
-
+    priority_map[node][2].extend(names)
+    childs = priority_map[node][2][:]
+    childs.append(node)
     if node in adj:
         for i in adj[node]:
-            dfs3(i, adj, dep + addDep)
+            dfs3(i, adj, dep + addDep, childs)
     return
 
 def generate_topology_for_id(id):
@@ -119,7 +123,7 @@ def generate_topology_for_id(id):
 
     for node, degree in indeg.items():
         if degree == 0:
-            dfs3(node, adj, 0)
+            dfs3(node, adj, 0, [])
 
     comp_to_edge = {}
     for pair in task_bucket[id]:
